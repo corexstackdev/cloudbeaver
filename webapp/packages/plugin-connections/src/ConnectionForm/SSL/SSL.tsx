@@ -30,7 +30,7 @@ import {
 import { useService } from '@cloudbeaver/core-di';
 import { ProjectInfoResource } from '@cloudbeaver/core-projects';
 import { ServerConfigResource } from '@cloudbeaver/core-root';
-import type { NetworkHandlerConfigInput, NetworkHandlerDescriptor } from '@cloudbeaver/core-sdk';
+import type { IObjectPropertyInfo, NetworkHandlerConfigInput, NetworkHandlerDescriptor } from '@cloudbeaver/core-sdk';
 import { type TabContainerPanelComponent, useTab } from '@cloudbeaver/core-ui';
 import { WEBSITE_LINKS } from '@cloudbeaver/core-links';
 
@@ -81,14 +81,14 @@ export const SSL: TabContainerPanelComponent<Props> = observer(function SSL({ fo
               properties={handler.properties}
               category={null}
               disabled={disabled || !enabled}
-              isSaved={p => !!p.id && initialHandler?.secureProperties[p.id] === SAVED_VALUE_INDICATOR}
+              isSaved={(p: IObjectPropertyInfo) => !!p.id && initialHandler?.secureProperties[p.id] === SAVED_VALUE_INDICATOR}
               autocompleteSectionName="section-ssl"
               hideEmptyPlaceholder
               showRememberTip
               small
             />
           )}
-          {categories.map(category => (
+          {categories.map((category: string) => (
             <React.Fragment key={category}>
               <GroupTitle keepSize>{category}</GroupTitle>
               <ObjectPropertyInfoForm
@@ -96,7 +96,7 @@ export const SSL: TabContainerPanelComponent<Props> = observer(function SSL({ fo
                 properties={handler.properties}
                 category={category}
                 disabled={disabled || !enabled}
-                isSaved={p => !!p.id && initialHandler?.secureProperties[p.id] === SAVED_VALUE_INDICATOR}
+                isSaved={(p: IObjectPropertyInfo) => !!p.id && initialHandler?.secureProperties[p.id] === SAVED_VALUE_INDICATOR}
                 autocompleteSectionName="section-ssl"
                 hideEmptyPlaceholder
                 showRememberTip

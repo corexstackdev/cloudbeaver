@@ -8,7 +8,7 @@
 import { observer } from 'mobx-react-lite';
 import React, { forwardRef, useContext } from 'react';
 
-import { getComputed, s, TreeNodeContext, TreeNodeControl, TreeNodeName, useContextMenuPosition, useS } from '@cloudbeaver/core-blocks';
+import { getComputed, type ITreeNodeContext, s, TreeNodeContext, TreeNodeControl, TreeNodeName, useContextMenuPosition, useS } from '@cloudbeaver/core-blocks';
 import { useService } from '@cloudbeaver/core-di';
 import { EventContext, EventStopPropagationFlag } from '@cloudbeaver/core-events';
 import { NavNodeInfoResource } from '@cloudbeaver/core-navigation-tree';
@@ -34,7 +34,7 @@ export const NavigationNodeProjectControl: NavTreeControlComponent = observer<Na
     const contextMenuPosition = useContextMenuPosition();
     const viewContext = useContext(CaptureViewContext);
     const elementsTreeContext = useContext(ElementsTreeContext);
-    const treeNodeContext = useContext(TreeNodeContext);
+    const treeNodeContext = useContext<ITreeNodeContext>(TreeNodeContext);
 
     const projectInfoResource = useService(ProjectInfoResource);
     const navNodeInfoResource = useService(NavNodeInfoResource);

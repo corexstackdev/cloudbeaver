@@ -94,7 +94,7 @@ export const Settings = observer<ISettingsProps>(function Settings({ resolver, s
             state={treeFilter}
             name="filter"
             placeholder={translate('plugin_settings_panel_search')}
-            onChange={filter => treeFilter.setFilter(filter)}
+            onChange={(filter: string) => treeFilter.setFilter(filter)}
           />
         </Container>
         <Container overflow vertical>

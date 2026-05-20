@@ -45,7 +45,7 @@ body:
     attributes:
       label: CloudBeaver Version
       description: What version of CloudBeaver are you running?
-      placeholder: ex. CloudBeaver Community 25.0.0
+      placeholder: ex. CorexStack 25.0.0
     validations:
       required: true
   - type: textarea

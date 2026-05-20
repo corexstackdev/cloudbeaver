@@ -16,7 +16,7 @@ import {
   useObjectPropertyCategories,
   useTranslate,
 } from '@cloudbeaver/core-blocks';
-import { type DriverPropertyInfoFragment, getObjectPropertyType } from '@cloudbeaver/core-sdk';
+import { type DriverPropertyInfoFragment, getObjectPropertyType, type IObjectPropertyInfo } from '@cloudbeaver/core-sdk';
 import type { IFormState } from '@cloudbeaver/core-ui';
 import type { IConnectionFormState } from '../IConnectionFormState.js';
 import { getConnectionFormOptionsPart } from './getConnectionFormOptionsPart.js';
@@ -76,7 +76,7 @@ export const ProviderPropertiesForm = observer<Props>(function ProviderPropertie
         </>
       )}
 
-      {categories.map((category, index) => (
+      {categories.map((category: string, index: number) => (
         <Container key={`${category}_${config.driverId}`} gap>
           <Expandable label={category} defaultExpanded={index === 0}>
             <Container dense={isOnlyBooleans(supportedProperties, category)} wrap gap>
@@ -86,7 +86,9 @@ export const ProviderPropertiesForm = observer<Props>(function ProviderPropertie
                 category={category}
                 disabled={disabled}
                 readOnly={readonly}
-                getLayoutSize={property => (getObjectPropertyType(property) === 'checkbox' ? { maximum: true } : { small: true, noGrow: true })}
+                getLayoutSize={(property: IObjectPropertyInfo) =>
+                  getObjectPropertyType(property) === 'checkbox' ? { maximum: true } : { small: true, noGrow: true }
+                }
                 hideEmptyPlaceholder
               />
             </Container>

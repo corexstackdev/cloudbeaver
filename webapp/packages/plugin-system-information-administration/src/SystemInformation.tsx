@@ -52,7 +52,7 @@ export const SystemInformation: TabContainerPanelComponent<AdministrationItemCon
             <ObjectPropertyInfoForm category={null} properties={properties} small fill readOnly />
           </Container>
         )}
-        {categories.map(category => (
+        {categories.map((category: string) => (
           <Container key={category} gap>
             <GroupTitle>{category}</GroupTitle>
             <ObjectPropertyInfoForm category={category} properties={properties} small fill readOnly />

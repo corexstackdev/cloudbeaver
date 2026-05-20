@@ -5,13 +5,13 @@
  * Licensed under the Apache License, Version 2.0.
  * you may not use this file except in compliance with the License.
  */
-import { createContext } from 'react';
+import { type Context, createContext, type KeyboardEvent as ReactKeyboardEvent } from 'react';
 
 import type { IExecutor, SyncExecutor } from '@cloudbeaver/core-executor';
 
 export type FormChangeValues = string | number | boolean | FileList | null | undefined;
 export type FormChangeHandler = (value: FormChangeValues, name: string | undefined) => void;
-type KeyHandler = (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+type KeyHandler = (event: ReactKeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 
 export interface IChangeData {
   value: FormChangeValues;
@@ -33,4 +33,4 @@ export interface IFormContext {
   submit: (event?: SubmitEvent) => Promise<void>;
 }
 
-export const FormContext = createContext<IFormContext | null>(null);
+export const FormContext: Context<IFormContext | null> = createContext<IFormContext | null>(null);

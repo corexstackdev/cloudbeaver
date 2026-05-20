@@ -1,6 +1,6 @@
 <img src="https://github.com/dbeaver/cloudbeaver/wiki/images/cloudbeaver-logo.png" alt="CloudBeaver logo" align="right" width="250"/>
 
-# CloudBeaver Community
+# CorexStack
 
 Cloud Database Manager - Community Edition.  
 CloudBeaver is a web server that provides a rich web interface. The server itself is a Java application, and the web part is written in TypeScript and React.  

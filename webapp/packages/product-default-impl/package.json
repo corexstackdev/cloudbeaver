@@ -10,7 +10,7 @@
     "public/**/*"
   ],
   "version": "0.1.0",
-  "description": "CloudBeaver Community",
+  "description": "CorexStack",
   "license": "Apache-2.0",
   "exports": {
     ".": "./lib/index.js",
@@ -35,7 +35,7 @@
     "tslib": "^2"
   },
   "product": {
-    "name": "CloudBeaver Community"
+    "name": "CorexStack"
   },
   "devDependencies": {
     "@cloudbeaver/core-cli": "workspace:*",

@@ -48,7 +48,7 @@ export const ObjectProperties = observer<Props>(function ObjectProperties({ obje
               <ObjectPropertyInfoForm properties={properties} category={null} small readOnly />
             </Group>
           )}
-          {categories.map(category => (
+          {categories.map((category: string) => (
             <Group key={category} gap large>
               <GroupTitle>{category}</GroupTitle>
               <ObjectPropertyInfoForm properties={properties} category={category} small readOnly />

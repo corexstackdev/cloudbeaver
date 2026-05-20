@@ -26,7 +26,7 @@ export const OutputLogsToolbar = observer<Props>(function OutputLogsToolbar({ st
       <Filter
         value={state.searchValue}
         placeholder={translate('sql_editor_output_logs_input_placeholder')}
-        onChange={value => state.setSearchValue(value.toString())}
+        onChange={(value: string) => state.setSearchValue(value)}
       />
       <Container keepSize>
         <OutputLogsMenu sqlEditorTabState={sqlEditorTabState} />

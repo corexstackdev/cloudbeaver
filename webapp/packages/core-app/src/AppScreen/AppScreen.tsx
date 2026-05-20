@@ -7,17 +7,12 @@
  */
 import { memo } from 'react';
 
-import { Loader, Placeholder } from '@cloudbeaver/core-blocks';
-import { useService } from '@cloudbeaver/core-di';
-
-import { AppScreenService } from './AppScreenService.js';
+import { Loader } from '@cloudbeaver/core-blocks';
 import { Main } from './Main.js';
 
 export const AppScreen = memo(function AppScreen() {
-  const appScreenService = useService(AppScreenService);
   return (
     <Loader suspense>
-      <Placeholder container={appScreenService.placeholder} />
       <Loader suspense>
         <Main />
       </Loader>

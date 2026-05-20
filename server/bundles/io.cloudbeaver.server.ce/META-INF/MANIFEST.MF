@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Vendor: DBeaver Corp
-Bundle-Name: CloudBeaver Community
+Bundle-Name: CorexStack
 Bundle-SymbolicName: io.cloudbeaver.server.ce;singleton:=true
 Bundle-Version: 26.1.0.qualifier
 Bundle-Release-Date: 20260601

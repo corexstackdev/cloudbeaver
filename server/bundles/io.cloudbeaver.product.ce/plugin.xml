@@ -10,8 +10,8 @@
     </extension>
 
     <extension point="org.eclipse.core.runtime.products" id="product">
-        <product application="io.cloudbeaver.product.ce.application" name="CloudBeaver Community">
-            <property name="appName" value="CloudBeaver Community"/>
+        <product application="io.cloudbeaver.product.ce.application" name="CorexStack">
+            <property name="appName" value="CorexStack"/>
             <property name="versionUpdateURL" value="https://dbeaver.com/product/cloudbeaver-ce-version.json"/>
         </product>
     </extension>
@@ -20,7 +20,7 @@
         <application
                 id="cloudbeaver-ce"
                 family="CB"
-                name="CloudBeaver Community"
+                name="CorexStack"
                 server="true"/>
     </extension>
 

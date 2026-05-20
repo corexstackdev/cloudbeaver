@@ -10,7 +10,7 @@
     "src/**/*.css"
   ],
   "version": "26.1.0",
-  "description": "CloudBeaver Community",
+  "description": "CorexStack",
   "license": "DBeaver Corp",
   "exports": {
     ".": "./dist/index.js",
@@ -22,7 +22,7 @@
   "scripts": {
     "build": "rimraf --glob dist && yarn workspaces foreach -Ap --include '@cloudbeaver/core-sdk' run gql:gen && yarn tsc -b",
     "bundle": "yarn build && vite build --mode production",
-    "dev": "yarn build && concurrently -P -k \"yarn workspaces foreach -Ap --include '@cloudbeaver/core-sdk' run gql:gen:dev\" \"vite {@}\"",
+    "dev": "vite --debug",
     "lint": "eslint ./src/ --ext .ts,.tsx",
     "version:set": "yarn core-cli-set-version",
     "validate-dependencies": "core-cli-validate-dependencies"
@@ -39,7 +39,7 @@
     "vite": "^7"
   },
   "product": {
-    "name": "CloudBeaver Community"
+    "name": "CorexStack"
   },
   "devDependencies": {
     "@cloudbeaver/browserslist-config": "workspace:*",

@@ -1,1 +1,7 @@
 @import '@cloudbeaver/plugin-tailwindcss-theme/tailwind.css';
+
+header[data-dialog-persistent-element],
+header:has(.dbv-kit-menubar),
+[class*='topMenuBar'] {
+  display: none !important;
+}

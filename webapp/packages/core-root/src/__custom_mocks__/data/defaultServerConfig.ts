@@ -14,7 +14,7 @@ export const defaultServerConfig: (productConfiguration?: Record<string, any>) =
   productConfiguration = defaultProductConfiguration,
 ) => ({
   serverConfig: {
-    name: 'CloudBeaver Community',
+    name: 'CorexStack',
     version: '22.1.2.202207140640',
     workspaceId: 'D14DGNGYNPI71M',
     rootURI: '/',
@@ -116,7 +116,7 @@ export const defaultServerConfig: (productConfiguration?: Record<string, any>) =
       id: 'io.cloudbeaver.product.ce.product',
       version: '22.1.2.202207140640',
       latestVersionInfo: WEBSITE_LINKS.LATEST_COMMUNITY_VERSION_PAGE,
-      name: 'CloudBeaver Community',
+      name: 'CorexStack',
       buildTime: 'July 14, 2022',
       releaseTime: 'July 11, 2022',
       licenseInfo: '',

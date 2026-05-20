@@ -28,7 +28,7 @@ export const TreeToolbarFilter = observer(function TreeToolbarFilter() {
     <Filter
       placeholder={translate(filter.filterPlaceholder ?? 'app_navigationTree_search')}
       value={filter.filter}
-      onChange={value => filter.setFilter(value as string)}
+      onChange={(value: string) => filter.setFilter(value)}
     />
   );
 });

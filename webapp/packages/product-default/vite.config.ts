@@ -5,7 +5,11 @@
  * Licensed under the Apache License, Version 2.0.
  * you may not use this file except in compliance with the License.
  */
+
 /// <reference types="node" />
+
+import { fileURLToPath } from 'node:url';
+
 import { defineConfig, UserConfig } from 'vite';
 
 import { baseConfigurationPlugin } from '@cloudbeaver/product-base';
@@ -14,14 +18,51 @@ import packageJson from './package.json';
 
 export default defineConfig(
   ({ mode }): UserConfig => ({
-    /*
-      Fixes https://github.com/dbeaver/cloudbeaver/issues/3308
-      ROOT_URI approach for assets doesn't work well when we serve our application not from a root folder. 
-      In that case inner Vite asset handling system add indices to CSS files using absolute path ignoring 
-      injected ROOT_URI. When using relative path in base property, we ask Vite to generate paths relatively 
-      to each file https://vite.dev/guide/build#public-base-path. 
-    */
+
     base: './',
-    plugins: [baseConfigurationPlugin(mode, packageJson)],
+
+    resolve: {
+      alias: [
+        {
+          find: '@cloudbeaver/core-blocks/module',
+          replacement: fileURLToPath(new URL('../core-blocks/src/module.ts', import.meta.url)),
+        },
+        {
+          find: '@cloudbeaver/core-blocks',
+          replacement: fileURLToPath(new URL('../core-blocks/src/index.ts', import.meta.url)),
+        },
+      ],
+    },
+
+    plugins: [
+      baseConfigurationPlugin(mode, packageJson)
+    ],
+
+    server: {
+
+      port: 8080,
+
+      proxy: {
+
+        '/api': {
+          target: 'http://localhost:8978',
+          changeOrigin: true,
+          secure: false,
+        },
+
+        '/api/ws': {
+          target: 'ws://localhost:8978',
+          ws: true,
+          changeOrigin: true,
+          secure: false,
+        },
+
+        '/auth-external': {
+          target: 'http://localhost:8978',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
   }),
 );
