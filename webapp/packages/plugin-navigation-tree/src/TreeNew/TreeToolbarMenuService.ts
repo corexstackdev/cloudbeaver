@@ -10,7 +10,6 @@ import { injectable } from '@cloudbeaver/core-di';
 import { ACTION_COLLAPSE_ALL, ActionService, type IAction, MenuService } from '@cloudbeaver/core-view';
 
 import { DATA_CONTEXT_TREE_DATA, DATA_CONTEXT_TREE_REFRESH } from './DATA_CONTEXT_TREE.js';
-import { MENU_TREE_SETTINGS } from './MENU_TREE_SETTINGS.js';
 import { MENU_TREE_TOOLBAR } from './MENU_TREE_TOOLBAR.js';
 import { ACTION_TREE_REFRESH } from './actions/ACTION_TREE_REFRESH.js';
 
@@ -52,7 +51,7 @@ export class TreeToolbarMenuService {
 
     this.menuService.addCreator({
       menus: [MENU_TREE_TOOLBAR],
-      getItems: (_, items) => [...items, MENU_TREE_SETTINGS, ACTION_TREE_REFRESH, ACTION_COLLAPSE_ALL],
+      getItems: (_, items) => [...items, ACTION_COLLAPSE_ALL],
     });
   }
 

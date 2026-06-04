@@ -167,6 +167,7 @@ export class ConnectionFoldersBootstrap extends Bootstrap {
 
     this.menuService.addCreator({
       menus: [MENU_ELEMENTS_TREE_TOOLS],
+      isApplicable: () => false,
       getItems: (context, items) => {
         if (!items.includes(ACTION_NEW_FOLDER)) {
           return [...items, ACTION_NEW_FOLDER];

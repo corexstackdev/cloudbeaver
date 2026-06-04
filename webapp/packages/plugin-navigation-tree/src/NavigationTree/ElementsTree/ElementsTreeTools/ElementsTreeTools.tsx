@@ -6,19 +6,9 @@
  * you may not use this file except in compliance with the License.
  */
 import { observer } from 'mobx-react-lite';
-import React, { useState } from 'react';
+import type React from 'react';
 
-import {
-  ActionIconButton,
-  Fill,
-  IconButtonStyles,
-  type PlaceholderElement,
-  s,
-  SContext,
-  type StyleRegistry,
-  useS,
-  useTranslate,
-} from '@cloudbeaver/core-blocks';
+import { Fill, IconButtonStyles, type PlaceholderElement, s, SContext, type StyleRegistry, useS } from '@cloudbeaver/core-blocks';
 import { useCaptureViewContext } from '@cloudbeaver/core-view';
 
 import { DATA_CONTEXT_ELEMENTS_TREE } from '../DATA_CONTEXT_ELEMENTS_TREE.js';
@@ -29,7 +19,6 @@ import ElementsTreeToolsIconButtonStyles from './ElementsTreeToolsIconButton.mod
 import { ElementsTreeToolsMenu } from './ElementsTreeToolsMenu.js';
 import { DATA_CONTEXT_NAV_TREE_ROOT } from './NavigationTreeSettings/DATA_CONTEXT_NAV_TREE_ROOT.js';
 import type { IElementsTreeSettingsProps } from './NavigationTreeSettings/ElementsTreeSettingsService.js';
-import { NavigationTreeSettings } from './NavigationTreeSettings/NavigationTreeSettings.js';
 
 const registry: StyleRegistry = [
   [
@@ -46,11 +35,8 @@ interface Props {
   settingsElements?: PlaceholderElement<IElementsTreeSettingsProps>[];
 }
 
-export const ElementsTreeTools = observer<React.PropsWithChildren<Props>>(function ElementsTreeTools({ tree, settingsElements, children }) {
-  const root = tree.root;
+export const ElementsTreeTools = observer<React.PropsWithChildren<Props>>(function ElementsTreeTools({ tree, children }) {
   const baseRoot = tree.baseRoot;
-  const translate = useTranslate();
-  const [opened, setOpen] = useState(false);
   const styles = useS(ElementsTreeToolsStyles, ElementsTreeToolsIconButtonStyles);
 
   useCaptureViewContext((context, id) => {
@@ -58,33 +44,13 @@ export const ElementsTreeTools = observer<React.PropsWithChildren<Props>>(functi
     context.set(DATA_CONTEXT_ELEMENTS_TREE, tree, id);
   });
 
-  const loading = tree.isLoading();
-
   return (
     <SContext registry={registry}>
       <div className={s(styles, { tools: true })}>
         <div className={s(styles, { actions: true })}>
-          {tree.settings?.configurable && (
-            <ActionIconButton
-              name="/icons/settings_cog_sm.svg"
-              title={translate('ui_settings')}
-              className={s(styles, { primary: true, opened })}
-              img
-              onClick={() => setOpen(!opened)}
-            />
-          )}
           <Fill />
           <ElementsTreeToolsMenu tree={tree} />
-          <ActionIconButton
-            name="/icons/refresh_sm.svg"
-            title={translate('app_navigationTree_refresh')}
-            disabled={loading}
-            className={s(styles, { primary: true, loading })}
-            img
-            onClick={() => tree.refresh(root)}
-          />
         </div>
-        {tree.settings && opened && <NavigationTreeSettings tree={tree} elements={settingsElements} />}
         <ElementsTreeFilter tree={tree} />
         {children}
       </div>

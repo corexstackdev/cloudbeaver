@@ -6,6 +6,6 @@
  * you may not use this file except in compliance with the License.
  */
 
-.tabOuter:only-child {
+.tabOuter {
   display: none;
 }
