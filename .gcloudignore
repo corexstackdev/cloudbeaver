@@ -1,0 +1,28 @@
+# Keep the Cloud Build upload small & fast.
+# Only deploy/cloudrun/* and webapp/* are needed for the overlay image.
+
+.git
+.github
+
+# Java backend build outputs / sources not used by the frontend overlay image
+server/**/target
+**/*.class
+
+# Local full-build staging produced by deploy/build.sh|build.bat
+deploy/cloudbeaver
+deploy/drivers
+deploy/logs
+deploy/docker/logs
+deploy/docker/workspace
+
+# Node / Yarn build artifacts (rebuilt inside the Docker image)
+**/node_modules
+**/dist
+**/lib
+webapp/**/.pnp.*
+webapp/.yarn/unplugged
+webapp/.yarn/install-state.gz
+
+# Misc
+**/.DS_Store
+**/*.log
